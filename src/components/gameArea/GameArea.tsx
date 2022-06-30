@@ -17,53 +17,60 @@ const GameArea:FunctionComponent=()=> {
     const [currentState7,setCurrentState7]=useState("")
     const [currentState8,setCurrentState8]=useState("")
 
-const winnerarray:object[]=[
-    {
-        state0:currentState,
-        state1:currentState1,
-        state2:currentState2,
-    },
-    {
-        state0:currentState3,
-        state1:currentState4,
-        state2:currentState5,
-    },
-    {
-        state0:currentState6,
-        state1:currentState7,
-        state2:currentState8,
-    },
-    {
-        state0:currentState,
-        state1:currentState3,
-        state2:currentState6,
-    },
-    {
-        state0:currentState1,
-        state1:currentState4,
-        state2:currentState7,
-    },
-    {
-        state0:currentState2,
-        state1:currentState5,
-        state2:currentState8,
-    },
-    {
-        state0:currentState,
-        state1:currentState4,
-        state2:currentState8,
-    },
-    {
-        state0:currentState2,
-        state1:currentState4,
-        state2:currentState6,
-    }
+const winnerarray=[
+    [
+        currentState,
+        currentState1,
+        currentState2,
+    ],
+    [
+        currentState3,
+        currentState4,
+        currentState5,
+    ],
+    [
+        currentState6,
+        currentState7,
+        currentState8,
+    ],
+    [
+        currentState,
+        currentState3,
+        currentState6,
+    ],
+    [
+        currentState1,
+        currentState4,
+        currentState7,
+    ],
+    [
+        currentState2,
+        currentState5,
+        currentState8,
+    ],
+    [
+        currentState,
+        currentState4,
+        currentState8,
+    ],
+    [
+        currentState2,
+        currentState4,
+        currentState6,
+    ]
 ]
-   
-const lookingForWinner=(winArray:object[])=>{
 
-   winArray.map((object)=>{
-    
+
+   
+const lookingForWinner=(winArray:string[][])=>{
+
+ 
+    winArray.map((item)=>{
+        console.log(item.every(checkArray))
+    })
+    function checkArray(inarray:string){
+        return inarray==="x"
+    }
 
 }
 
