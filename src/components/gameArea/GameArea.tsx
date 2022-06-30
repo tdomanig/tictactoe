@@ -63,8 +63,7 @@ const winnerarray:object[]=[
 const lookingForWinner=(winArray:object[])=>{
 
    winArray.map((object)=>{
-       if(object.state0)
-   })
+    
 
 }
 
