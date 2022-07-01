@@ -60,16 +60,40 @@ const winnerarray=[
     ]
 ]
 
-
+const reset=()=>{
+    setCurrentState("")
+    setCurrentState1("")
+    setCurrentState2("")
+    setCurrentState3("")
+    setCurrentState4("")
+    setCurrentState5("")
+    setCurrentState6("")
+    setCurrentState7("")
+    setCurrentState8("")
+   
+    
+}
    
 const lookingForWinner=(winArray:string[][])=>{
 
  
     winArray.map((item)=>{
-        console.log(item.every(checkArray))
+        if(item.every(checkArrayx)===true){
+            window.alert("Der Gewinner ist:Player1")
+            console.log(item)
+            reset()
+           
+        }
+        if(item.every(checkArrayo)===true){
+            window.alert("Der Gewinner ist:Player2")
+            reset()
+        }
     })
-    function checkArray(inarray:string){
+    function checkArrayx(inarray:string){
         return inarray==="x"
+    }
+    function checkArrayo(inarray:string){
+        return inarray==="o"
     }
 
 }
@@ -77,9 +101,10 @@ const lookingForWinner=(winArray:string[][])=>{
 
 
 let avatar:string=""
-let player:number=1
 
-const getCurrentState=(player:number,avatar:string,setCurrentState:Function, currentState:string)=>{
+lookingForWinner(winnerarray)
+const getCurrentState=(avatar:string,setCurrentState:Function, currentState:string)=>{
+   
     const playing=document.getElementById("player")
     if(currentState===""){
         if(playing?.innerText==="Player1"){
@@ -91,35 +116,37 @@ const getCurrentState=(player:number,avatar:string,setCurrentState:Function, cur
             
         }
         setCurrentState(avatar)
-        lookingForWinner(winnerarray)
+       
     }
     
-    
+   
     
 
 }
- 
+
   return (
    <GameField>
        <WhoPlay id="player">Player1</WhoPlay>
        <PlayRow id="Firstrow">
-            <PlayField  onClick={()=>getCurrentState(player,avatar,setCurrentState,currentState)}>{currentState}</PlayField>
-            <PlayField onClick={()=>getCurrentState(player,avatar,setCurrentState1,currentState1)}>{currentState1}</PlayField>
-            <PlayField onClick={()=>getCurrentState(player,avatar,setCurrentState2,currentState2)}>{currentState2}</PlayField>
+            <PlayField  onClick={()=>getCurrentState(avatar,setCurrentState,currentState)}>{currentState}</PlayField>
+            <PlayField onClick={()=>getCurrentState(avatar,setCurrentState1,currentState1)}>{currentState1}</PlayField>
+            <PlayField onClick={()=>getCurrentState(avatar,setCurrentState2,currentState2)}>{currentState2}</PlayField>
        </PlayRow>
        <PlayRow id="Secondrow">
-            <PlayField onClick={()=>getCurrentState(player,avatar,setCurrentState3,currentState3)}>{currentState3}</PlayField>
-            <PlayField onClick={()=>getCurrentState(player,avatar,setCurrentState4,currentState4)}>{currentState4}</PlayField>
-            <PlayField onClick={()=>getCurrentState(player,avatar,setCurrentState5,currentState5)}>{currentState5}</PlayField>
+            <PlayField onClick={()=>getCurrentState(avatar,setCurrentState3,currentState3)}>{currentState3}</PlayField>
+            <PlayField onClick={()=>getCurrentState(avatar,setCurrentState4,currentState4)}>{currentState4}</PlayField>
+            <PlayField onClick={()=>getCurrentState(avatar,setCurrentState5,currentState5)}>{currentState5}</PlayField>
        </PlayRow>
        <PlayRow id="Thirdrow">
-            <PlayField onClick={()=>getCurrentState(player,avatar,setCurrentState6,currentState6)}>{currentState6}</PlayField>
-            <PlayField onClick={()=>getCurrentState(player,avatar,setCurrentState7,currentState7)}>{currentState7}</PlayField>
-            <PlayField onClick={()=>getCurrentState(player,avatar,setCurrentState8,currentState8)}>{currentState8}</PlayField>
+            <PlayField onClick={()=>getCurrentState(avatar,setCurrentState6,currentState6)}>{currentState6}</PlayField>
+            <PlayField onClick={()=>getCurrentState(avatar,setCurrentState7,currentState7)}>{currentState7}</PlayField>
+            <PlayField onClick={()=>getCurrentState(avatar,setCurrentState8,currentState8)}>{currentState8}</PlayField>
        </PlayRow>
+       <Reset onClick={reset}>Reset</Reset>
    </GameField>
+   
   )}
-
+  
 export default GameArea;
 
 
@@ -143,5 +170,16 @@ export default GameArea;
     `
 const WhoPlay=styled.h1`
     color:red;
+
+`
+const Reset=styled.button`
+background-color: blue;
+color:white;
+height:75px;
+width:175px;
+margin-top:30px;
+&:hover{
+    background-color:rgb(82, 82, 220);
+}
 
 `
